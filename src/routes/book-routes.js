@@ -7,8 +7,11 @@ const Router = require("express").Router;
 
 // use the controller for each route
 const bookController = require("../controllers/book-controller");
+const authMiddleware = require("../middleware/auth-middleware");
 
 const BookRouter = Router();
+
+BookRouter.use(authMiddleware);
 
 //  GET `/books` Get all the books: `getBooks()` controller
 BookRouter.get("/books", bookController.getBooks);
